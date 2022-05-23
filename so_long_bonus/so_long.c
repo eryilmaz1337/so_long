@@ -22,7 +22,7 @@ int main(int index, char **data)
 		so_long->uz_y = uz_y(&data[1][2]);
 		so_long->index = index;
 		map(so_long, &data[1][2]);
-		so_long->uz_x = ft_strlen(so_long->map[0]);
+		so_long->uz_x = strlen(so_long->map[0]);
 		so_long->hfk = char_chack(so_long, 0, 0, 0);
 		so_long->coin = coin_number(so_long);
 		error_status(so_long);
@@ -30,7 +30,6 @@ int main(int index, char **data)
 		so_long->mlx = mlx_init();
 		so_long->window = mlx_new_window(so_long->mlx, (so_long->uz_x - 1) * 32, (so_long->uz_y-1) * 32, "SO_LONG");
 		insertimg(so_long->picture, so_long, 0);
-		so_long->dki = 0;
 		mlx_hook(so_long->window, 17, (0L), keycheck_2, so_long);
 		mlx_hook(so_long->window, 2, 1L << 0,keycheck, so_long);
 		mlx_loop_hook(so_long->mlx, animation, so_long);

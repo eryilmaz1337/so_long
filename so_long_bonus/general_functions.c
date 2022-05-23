@@ -41,17 +41,18 @@ int uz_y(char *str)
 	return (i);
 }
 
-void map(t_game *so_long,char *str)
+void map(t_game *so_long, char *str)
 {
 	int i;
 	i = 0;
 	so_long->fd = open(str, O_RDONLY);
-	so_long->map = malloc(sizeof(char *) * so_long->uz_y);
-	while (so_long->uz_y >= i)
+	so_long->map = malloc(sizeof(char *) * so_long->uz_y -1);
+	while (so_long->uz_y -1 >= i)
 	{
 		so_long->map[i] = get_next_line(so_long->fd);
 		i++;
 	}
+	close(so_long->fd);
 }
 
 int chack_map(t_game *so_long, int i, int k, int a)
@@ -95,6 +96,7 @@ int	char_chack(t_game *so, int k, int a, int i)
 	{
 		while (a <= so->uz_x - 2)
 		{
+			
 			if (so->map[0][a] != '1')
 				return (-1);
 			if (so->map[so->uz_y - 2][a] != '1')
@@ -124,6 +126,6 @@ int	char_chack(t_game *so, int k, int a, int i)
 		k++;
 	}
 	if (i != 1 || g != 1 || b == 0 || n == 0)
-			return (-1);
+		return (-1);
 	return (0);
 }

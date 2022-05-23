@@ -34,6 +34,7 @@ typedef struct s_game
 {
 	void *mlx;
 	void *window;
+	//void *img;
 	char *realitive_patch;
 	int a;
 	int b;
@@ -43,18 +44,21 @@ typedef struct s_game
 	int di;
 	int dk;
 	int dki;
+	int dki2;
 	int uz_x;
 	int uz_y;
 	int fd;
-	int hk;
+	int an;
 	int hfk;
 	int ik;
 	int pc;
 	int dongu;
+	int dongu2;
 	int index;
 	int coin;
 	char **map;
 } t_game;
+
 void hata(t_game *so);
 ssize_t name_check(char *str);
 int uz_y(char *str);
@@ -66,6 +70,7 @@ void error_status(t_game *so_long);
 int coin_number(t_game *so_long);
 void insertimg(img *piscure, t_game *tmp, int x);
 void insertimgxpm(char *path, int x, int y, t_game *tmp);
+void insertimgxpm2(char *path, int x, int y, t_game *tmp);
 int keycheck(int keycode, t_game *so_long);
 void movement(int x, int y, int i, int k, char char_1, t_game *so_long, int durum);
 void write_1(int movement, int coin);
@@ -79,7 +84,10 @@ int keycheck_2(t_game *so_long);
 int animation(t_game *so_long);
 void anima(t_game *tmp);
 void enemy_move(t_game *so_long, int x, int y);
+void ft_is_move_anim(t_game *so_long, int x, int y);
 void is_enemy(t_game *so_long, int x, int y);
+void is_enemy2(t_game *so_long, int x, int y);
+void is_enemy3(t_game *so_long, int x, int y);
 int animation(t_game *so_long);
 img *insertimgpath();
 #include <fcntl.h>

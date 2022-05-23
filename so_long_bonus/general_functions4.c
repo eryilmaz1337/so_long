@@ -43,10 +43,16 @@ void write_1(int movement,int coin)
 int animation(t_game *so_long)
 {
 	(so_long)->dki++;
+	so_long->dki2++;
 	if ((so_long)->dki >= 3000)
 	{
 		is_enemy(so_long, -1, -1);
 		(so_long)->dki = 0;
+	}
+	if ((so_long)->dki2 >= 3000)
+	{
+		is_enemy2(so_long,-1,-1);
+		(so_long)->dki2 = 0;
 	}
 	return (0);
 }
@@ -62,7 +68,7 @@ void enemy_move(t_game *so_long, int x, int y)
 	if (so_long->dongu == 3)
 	{
 		insertimgxpm(so_long->picture->imgfire4, x*32, y*32, so_long);
-		so_long->dongu = 0;
+		
 	}
 }
 

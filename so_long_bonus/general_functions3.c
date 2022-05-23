@@ -17,6 +17,13 @@ void insertimgxpm(char *path,int x, int y, t_game *tmp)
 	mlx_put_image_to_window(tmp->mlx, tmp->window, img, x, y);
 }
 
+// void insertimgxpm2(char *path,int x, int y, t_game *tmp)
+// {
+// 	mlx_destroy_image(tmp->mlx, tmp->img);
+// 	tmp->img = mlx_xpm_file_to_image(tmp->mlx, path, &tmp->a, &tmp->b);
+// 	mlx_put_image_to_window(tmp->mlx, tmp->window, tmp->img, x, y);
+// }
+
 void insertimg(img *piscure, t_game *tmp, int x)
 {
 	int i;

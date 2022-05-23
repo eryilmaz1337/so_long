@@ -96,7 +96,7 @@ void right(t_game *so_long)
 			write(1, "Lütfen Tüm İksirleri toplayın\n", 34);
 	}
 	else if(so_long->map[so_long->i - 1][so_long->k] == 'N')
-		destroy_win_2(so_long,0,"Oyun Bitti Tebrikler", 1);
+		destroy_win_2(so_long,0,"Oyun Bitti Yandınız", 1);
 }
 
 void left(t_game *so_long)
@@ -123,7 +123,7 @@ void left(t_game *so_long)
 			write(1, "Lütfen Tüm İksirleri toplayın\n", 34);
 	}
 	else if(so_long->map[so_long->i - 1][so_long->k-2] == 'N')
-		destroy_win_2(so_long,0,"Oyun Bitti Tebrikler", 1);
+		destroy_win_2(so_long,0,"Oyun Bitti Yandınız", 1);
 }
 
 void player(t_game *so_long)
