@@ -9,7 +9,8 @@
 /*   Updated: 2022/04/27 19:02:56 by eryilmaz         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "so_long.h"
+#include "../library/so_long.h"
+
 int g_coin = 0;
 int g_hareket = 0;
 void up(t_game *so_long)

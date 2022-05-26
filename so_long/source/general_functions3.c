@@ -9,7 +9,8 @@
 /*   Updated: 2022/05/18 18:49:48 by eryilmaz         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "so_long.h"
+#include "../library/so_long.h"
+
 void insertimgxpm(char *path,int x, int y, t_game *tmp)
 {
 	void *img;

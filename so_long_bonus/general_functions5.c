@@ -55,6 +55,7 @@ void	ft_is_move_anim(t_game *so_long, int x, int y)
 			b++;
 			if (a == i)
 			{
+				write(1, "*", 1);
 				a = 0;
 				i = 0;
 			}

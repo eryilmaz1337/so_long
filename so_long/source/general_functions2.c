@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../library/so_long.h"
+
 
 int coin_number(t_game *so_long)
 {

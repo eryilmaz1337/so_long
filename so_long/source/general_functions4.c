@@ -9,7 +9,7 @@
 /*   Updated: 2022/05/20 17:31:46 by eryilmaz         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "so_long.h"
+#include "../library/so_long.h"
 
 void movement(int x, int y, int i, int k, char char_1, t_game *so_long, int durum)
 {

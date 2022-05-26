@@ -9,19 +9,27 @@
 /*   Updated: 2022/05/12 16:50:39 by eryilmaz         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "so_long.h"
+#include "../library/so_long.h"
 
-ssize_t name_check(char *str)
+ssize_t	name_check(char *str)
 {
-	int uz;
+	int	uz;
 
-	str = ft_strchr(str, '.');
-	if (!str)
+	uz = open(str, O_RDONLY);
+	close(uz);
+	if (uz == -1)
 		return (-1);
-	uz = ft_strlen(str);
-	if (uz == 4 && ft_strnstr(str, ".ber", 4))
-		return (0);
-	return(-1);
+	else
+	{
+		uz = 0;
+		str = ft_strchr(str, '.');
+		if (str == NULL)
+			return (-1);
+		uz = ft_strlen(str);
+		if (uz == 4 && ft_strnstr(str, ".ber", 4))
+			return (0);
+	}
+	return (-1);
 }
 
 int uz_y(char *str)
@@ -47,8 +55,8 @@ void map(t_game *so_long,char *str)
 	int i;
 	i = 0;
 	so_long->fd = open(str, O_RDONLY);
-	so_long->map = malloc(sizeof(char *) * so_long->uz_y);
-	while (so_long->uz_y >= i)
+	so_long->map = malloc(sizeof(char *) * so_long->uz_y-1);
+	while (so_long->uz_y-1 >= i)
 	{
 		so_long->map[i] = get_next_line(so_long->fd);
 		i++;

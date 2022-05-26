@@ -10,15 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../library/so_long.h"
 
 int main(int index, char **data)
 {
-	if(index==2)
+	if(index == 2)
 	{
 		t_game *so_long;
 		so_long = malloc(sizeof(t_game));
 		so_long->ik = name_check(&data[1][2]);
+		if (so_long->ik == -1)
+			error_status(so_long);
 		so_long->uz_y = uz_y(&data[1][2]);
 		so_long->index = index;
 		map(so_long, &data[1][2]);
