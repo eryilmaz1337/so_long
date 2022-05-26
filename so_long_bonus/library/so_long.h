@@ -27,6 +27,10 @@ typedef struct s_img
 	char	*imgcoin;
 	char	*imgground;
 	char	*imgdoor;
+	char	*imgfire1;
+	char	*imgfire2;
+	char	*imgfire3;
+	char	*imgfire4;
 	char	**imgplayer;
 }	t_img;
 
@@ -45,16 +49,22 @@ typedef struct s_game
 	int		g_hareket;
 	int		b1;
 	int		g;
+	int		enemy_speed;
+	int		n;
 	int		i;
 	int		k;
 	int		di;
 	int		dk;
+	int		dki;
+	int		dki2;
 	int		uz_x;
 	int		uz_y;
 	int		fd;
 	int		an;
 	int		hfk;
 	int		ik;
+	int		dongu;
+	int		dongu2;
 	int		index;
 	int		coin;
 	t_img	*picture;
@@ -72,7 +82,7 @@ int		d(t_game *so, int k, int a);
 int		name_check(char *str);
 
 void	movement(int x, int y, char char_1, t_game *so_long);
-void	write_1(int movement, int coin);
+void	write_1(t_game *so_long);
 void	up(t_game *so_long);
 void	down(t_game *so_long);
 void	right(t_game *so_long);
@@ -83,6 +93,9 @@ void	destroy_win_2(t_game *so_long, int durum, char *str, int status);
 void	error_status(t_game *so_long);
 void	insertimg(t_img *piscure, t_game *tmp);
 void	insertimgxpm(char *path, int x, int y, t_game *tmp);
+void	enemy_anim(t_game *so_long, int x, int y);
+void	is_enemy(t_game *so_long, int x, int y);
+void	is_enemy_move(t_game *so_long, int x, int y);
 void	assignment(t_game *so_long, char **data, int index);
 t_img	*insertimgpath(void);
 #endif

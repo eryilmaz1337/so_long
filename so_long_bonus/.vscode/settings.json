@@ -1,5 +1,8 @@
 {
 	"files.associations": {
-		"_malloc.h": "c"
+		"_malloc.h": "c",
+		"stdlib.h": "c",
+		"algorithm": "c",
+		"chrono": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: eryilmaz <eryilmaz@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 12:57:33 by eryilmaz          #+#    #+#             */
-/*   Updated: 2022/02/23 13:55:42 by eryilmaz         ###   ########.tr       */
+/*   Updated: 2022/05/26 12:57:59 by eryilmaz         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"

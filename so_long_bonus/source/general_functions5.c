@@ -1,46 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   general_functions4.c                               :+:      :+:    :+:   */
+/*   general_functions5.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eryilmaz <eryilmaz@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/20 17:31:44 by eryilmaz          #+#    #+#             */
-/*   Updated: 2022/05/25 18:01:43 by eryilmaz         ###   ########.tr       */
+/*   Created: 2022/05/24 18:16:20 by eryilmaz          #+#    #+#             */
+/*   Updated: 2022/05/25 18:02:12 by eryilmaz         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../library/so_long.h"
-
-void	movement(int x, int y, char char_1, t_game *so_long)
-{
-	int	coordinat_x;
-	int	coordinat_y;
-	int	t;
-	int	r;
-
-	r = 1;
-	t = 0;
-	so_long->map[so_long->i - x][so_long->k - y] = 'P';
-	so_long->map[so_long->i - 1][so_long->k - 1] = char_1;
-	coordinat_x = (so_long->i - x) * 32;
-	coordinat_y = (so_long->k - y) * 32;
-	insertimgxpm(so_long->picture->imgplayer[so_long->durum],
-		coordinat_y, coordinat_x, so_long);
-	coordinat_x = (so_long->i - 1) * 32;
-	coordinat_y = (so_long->k - 1) * 32;
-	insertimgxpm(so_long->picture->imgground, coordinat_y,
-		coordinat_x, so_long);
-}
-
-void	write_1(int movement, int coin)
-{
-	ft_putstr_fd("\033[0;96mtoplam hamle sayısı=", 1);
-	ft_putnbr_fd(movement, 1);
-	write(1, " ", 1);
-	ft_putstr_fd("toplam coin sayısı=", 1);
-	ft_putnbr_fd(coin, 1);
-	write(1, "\n", 1);
-}
 
 void	l(t_game *so, int k, int a)
 {
@@ -50,6 +19,8 @@ void	l(t_game *so, int k, int a)
 		so->b++;
 	if (so->map[k][a] == 'E')
 		so->g++;
+	if (so->map[k][a] == 'N')
+		so->n++;
 }
 
 int	d(t_game *so, int k, int a)
@@ -78,15 +49,50 @@ int	d(t_game *so, int k, int a)
 	return (0);
 }
 
+void	enemy_anim(t_game *so_long, int x, int y)
+{
+	if (so_long->dongu == 0)
+		insertimgxpm(so_long->picture->imgfire1,
+			x * 32, y * 32, so_long);
+	if (so_long->dongu == 1)
+		insertimgxpm(so_long->picture->imgfire2,
+			x * 32, y * 32, so_long);
+	if (so_long->dongu == 2)
+		insertimgxpm(so_long->picture->imgfire3,
+			x * 32, y * 32, so_long);
+	if (so_long->dongu == 3)
+	{
+		insertimgxpm(so_long->picture->imgfire4,
+			x * 32, y * 32, so_long);
+		so_long->dongu = 0;
+	}
+}
+
+void	is_enemy(t_game *so_long, int x, int y)
+{
+	while (++y < so_long->uz_y - 1)
+	{
+		x = -1;
+		while (++x < so_long->uz_x - 1)
+		{
+			if (so_long->map[y][x] == 'N')
+				enemy_anim(so_long, x, y);
+		}
+	}
+	so_long->dongu++;
+}
+
 void	assignment(t_game *so_long, char **data, int index)
 {
 	so_long->g_coin = 0;
-	so_long->index = index;
 	so_long->g_hareket = 0;
 	so_long->g = 0;
 	so_long->b = 0;
+	so_long->n = 0;
 	so_long->i = 0;
+	so_long->enemy_speed = 0;
 	so_long->durum = 0;
+	so_long->index = index;
 	so_long->ik = name_check(&data[1][2]);
 	if (so_long->ik == -1)
 		error_status(so_long);

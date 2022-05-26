@@ -1,38 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   name_check.c                                       :+:      :+:    :+:   */
+/*   general_functions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eryilmaz <eryilmaz@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 16:50:37 by eryilmaz          #+#    #+#             */
-/*   Updated: 2022/05/12 16:50:39 by eryilmaz         ###   ########.tr       */
+/*   Updated: 2022/05/25 18:00:17 by eryilmaz         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "so_long.h"
+#include "../library/so_long.h"
 
-ssize_t name_check(char *str)
+int	name_check(char *str)
 {
-	int uz;
-	str = ft_strchr(str, '.');
-	if(str==NULL)
+	int	uz;
+
+	uz = open(str, O_RDONLY);
+	close(uz);
+	if (uz == -1)
 		return (-1);
-	uz = ft_strlen(str);
-	if (uz == 4 && ft_strnstr(str, ".ber", 4))
-		return (0);
-	return(-1);
+	else
+	{
+		uz = 0;
+		str = ft_strchr(str, '.');
+		if (str == NULL)
+			return (-1);
+		uz = ft_strlen(str);
+		if (uz == 4 && ft_strnstr(str, ".ber", 4))
+			return (0);
+	}
+	return (-1);
 }
 
-int uz_y(char *str)
+int	uz_y(char *str)
 {
-	int fd;
-	int i;
-	char *str1;
+	int		fd;
+	int		i;
+	char	*str1;
 
 	str1 = "NULL";
 	i = 0;
 	fd = open(str, O_RDONLY);
-	while (str1!=NULL)
+	while (str1 != NULL)
 	{
 		str1 = get_next_line(fd);
 		i++;
@@ -41,9 +50,10 @@ int uz_y(char *str)
 	return (i);
 }
 
-void map(t_game *so_long, char *str)
+void	map(t_game *so_long, char *str)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	so_long->fd = open(str, O_RDONLY);
 	so_long->map = malloc(sizeof(char *) * so_long->uz_y -1);
@@ -55,10 +65,10 @@ void map(t_game *so_long, char *str)
 	close(so_long->fd);
 }
 
-int chack_map(t_game *so_long, int i, int k, int a)
+int	chack_map(t_game *so_long, int i, int k, int a)
 {
-	int *uz;
-	
+	int	*uz;
+
 	uz = malloc(so_long->uz_y * sizeof(int));
 	while (i <= so_long->uz_y - 2)
 	{
@@ -69,7 +79,7 @@ int chack_map(t_game *so_long, int i, int k, int a)
 	{
 		while (a < i)
 		{
-			if(uz[k]==uz[a])
+			if (uz[k] == uz[a])
 				a++;
 			else
 			{
@@ -83,49 +93,19 @@ int chack_map(t_game *so_long, int i, int k, int a)
 	return (0);
 }
 
-int	char_chack(t_game *so, int k, int a, int i)
+int	char_chack(t_game *so, int k, int a)
 {
-	int b;
-	int g;
-	int n;
+	int	de;
 
-	g = 0;
-	b = 0;
-	n = 0;
+	de = 0;
 	while (k < so->uz_y - 1)
 	{
-		while (a <= so->uz_x - 2)
-		{
-			
-			if (so->map[0][a] != '1')
-				return (-1);
-			if (so->map[so->uz_y - 2][a] != '1')
-				return (-1);
-			a++;
-		}
-		a = 0;
-		while (a < so->uz_y - 2)
-		{
-			if (so->map[a][0] != '1' || so->map[a][so->uz_x - 2] != '1')
-				return (-1);
-			a++;
-		}
-		a = 0;
-		while (a < so->uz_x - 2)
-		{
-			if (so->map[k][a] == 'P')
-				i++;
-			if(so->map[k][a]=='C')
-				b++;
-			if(so->map[k][a]=='E')
-				g++;
-			if(so->map[k][a]=='N')
-				n++;
-			a++;
-		}
+		de = d(so, k, a);
 		k++;
 	}
-	if (i != 1 || g != 1 || b == 0 || n == 0)
+	if (de == -1)
+		return (-1);
+	if (so->i != 1 || so->g != 1 || so->b == 0 || so->n == 0)
 		return (-1);
 	return (0);
 }

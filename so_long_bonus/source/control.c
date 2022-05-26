@@ -19,7 +19,7 @@ void	up(t_game	*so_long)
 		so_long->durum = 1;
 		movement(2, 1, '0', so_long);
 		so_long->g_hareket++;
-		write_1(so_long->g_hareket, so_long->g_coin);
+		write_1(so_long);
 	}
 	else if (so_long->map[so_long->i - 2][so_long->k - 1] == 'C')
 	{
@@ -27,7 +27,7 @@ void	up(t_game	*so_long)
 		movement(2, 1, '0', so_long);
 		so_long->g_coin++;
 		so_long->g_hareket++;
-		write_1 (so_long->g_hareket, so_long->g_coin);
+		write_1 (so_long);
 	}
 	else if (so_long->map[so_long->i - 2][so_long->k - 1] == 'E')
 	{
@@ -36,6 +36,8 @@ void	up(t_game	*so_long)
 		else
 			write (1, "Lütfen Tüm İksirleri toplayın\n", 34);
 	}
+	else if (so_long->map[so_long->i - 2][so_long->k - 1] == 'N')
+		destroy_win_2 (so_long, 0, "Oyun Bitti Yandınız", 1);
 }
 
 void	down(t_game	*so_long)
@@ -46,7 +48,7 @@ void	down(t_game	*so_long)
 		so_long->durum = 0;
 		movement(0, 1, '0', so_long);
 		so_long->g_hareket++;
-		write_1(so_long->g_hareket, so_long->g_coin);
+		write_1(so_long);
 	}
 	else if (so_long->map[so_long->i][so_long->k - 1] == 'C')
 	{
@@ -54,7 +56,7 @@ void	down(t_game	*so_long)
 		movement(0, 1, '0', so_long);
 		so_long->g_coin++;
 		so_long->g_hareket++;
-		write_1(so_long->g_hareket, so_long->g_coin);
+		write_1(so_long);
 	}
 	else if (so_long->map[so_long->i][so_long->k - 1] == 'E')
 	{
@@ -63,6 +65,8 @@ void	down(t_game	*so_long)
 		else
 			write (1, "Lütfen Tüm İksirleri toplayın\n", 34);
 	}
+	else if (so_long->map[so_long->i][so_long->k - 1] == 'N')
+		destroy_win_2 (so_long, 0, "Oyun Bitti Yandınız", 1);
 }
 
 void	right(t_game	*so_long)
@@ -73,7 +77,7 @@ void	right(t_game	*so_long)
 		so_long->durum = 3;
 		movement(1, 0, '0', so_long);
 		so_long->g_hareket++;
-		write_1 (so_long->g_hareket, so_long->g_coin);
+		write_1 (so_long);
 	}
 	else if (so_long->map[so_long->i - 1][so_long->k] == 'C')
 	{
@@ -81,7 +85,7 @@ void	right(t_game	*so_long)
 		movement(1, 0, '0', so_long);
 		so_long->g_coin++;
 		so_long->g_hareket++;
-		write_1 (so_long->g_hareket, so_long->g_coin);
+		write_1 (so_long);
 	}
 	else if (so_long->map[so_long->i - 1][so_long->k] == 'E')
 	{
@@ -90,6 +94,8 @@ void	right(t_game	*so_long)
 		else
 			write (1, "Lütfen Tüm İksirleri toplayın\n", 34);
 	}
+	else if (so_long->map[so_long->i - 1][so_long->k] == 'N')
+		destroy_win_2 (so_long, 0, "Oyun Bitti Yandınız", 1);
 }
 
 void	left(t_game	*so_long)
@@ -100,7 +106,7 @@ void	left(t_game	*so_long)
 		so_long->durum = 2;
 		movement(1, 2, '0', so_long);
 		so_long->g_hareket++;
-		write_1(so_long->g_hareket, so_long->g_coin);
+		write_1(so_long);
 	}
 	else if (so_long->map[so_long->i - 1][so_long->k - 2] == 'C')
 	{
@@ -108,7 +114,7 @@ void	left(t_game	*so_long)
 		movement(1, 2, '0', so_long);
 		so_long->g_coin++;
 		so_long->g_hareket++;
-		write_1(so_long->g_hareket, so_long->g_coin);
+		write_1(so_long);
 	}
 	else if (so_long->map[so_long->i - 1][so_long->k - 2] == 'E')
 	{
@@ -117,6 +123,8 @@ void	left(t_game	*so_long)
 		else
 			write(1, "Lütfen Tüm İksirleri toplayın\n", 34);
 	}
+	else if (so_long->map[so_long->i - 1][so_long->k - 2] == 'N')
+		destroy_win_2(so_long, 0, "Oyun Bitti Yandınız", 1);
 }
 
 void	player(t_game *so_long)

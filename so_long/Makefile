@@ -1,7 +1,7 @@
 NAME		= libft.a
 LIBFT		= ./library/libft/
 CC			= gcc
-FLAGS		= ./source/*.c ./library/get_next_line/get_next_line.c ./library/get_next_line/get_next_line_utils.c ./source/libft.a -framework OpenGL -framework AppKit -L ./library/minilibx -lmlx -glldb -Wall -Wextra -Werror
+FLAGS		= ./source/*.c ./library/get_next_line/get_next_line.c ./library/get_next_line/get_next_line_utils.c ./source/libft.a -framework OpenGL -framework AppKit -L ./library/minilibx -lmlx -Wall -Wextra -Werror
 RM			= rm -f
 AR			= ar rcs
 

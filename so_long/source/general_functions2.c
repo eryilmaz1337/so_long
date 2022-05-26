@@ -6,18 +6,17 @@
 /*   By: eryilmaz <eryilmaz@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 19:27:30 by eryilmaz          #+#    #+#             */
-/*   Updated: 2022/05/17 19:27:34 by eryilmaz         ###   ########.tr       */
+/*   Updated: 2022/05/25 18:03:35 by eryilmaz         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../library/so_long.h"
 
-
-int coin_number(t_game *so_long)
+int	coin_number(t_game *so_long)
 {
-	int i;
-	int k;
-	int c;
+	int	i;
+	int	k;
+	int	c;
 
 	i = 0;
 	k = 0;
@@ -27,7 +26,6 @@ int coin_number(t_game *so_long)
 		k = 0;
 		while (so_long->map[i][k] != '\n')
 		{
-			
 			if (so_long->map[i][k] == 'C')
 				c++;
 			k++;
@@ -37,25 +35,25 @@ int coin_number(t_game *so_long)
 	return (c);
 }
 
-void error_status(t_game *so_long)
+void	error_status(t_game *so_long)
 {
 	if (so_long->index != 2)
-		destroy_win_2(so_long, 1,"Lütfen Haritayı düzgün ekleyin tek seferde bir harita eklenebilir", 0);
+		destroy_win_2(so_long, 1,
+			"Lütfen tek seferde bir harita eklenebilir", 0);
 	if (so_long->fd == -1)
-		destroy_win_2(so_long, 1, "**********hata (dosya bulunamadı)**********", 0);
-	if(so_long->ik == -1)
+		destroy_win_2(so_long, 1, "***hata (dosya bulunamadı)***", 0);
+	if (so_long->ik == -1)
 		destroy_win_2(so_long, 1, "harita .ber uzantılı olmalıdır", 0);
-	if(so_long->hk == -1)
-		destroy_win_2(so_long, 1, "!!!!! hata lütfen harita dizaynını kurallara uygun girin !!!!!!!!", 0);
-	if(so_long->hfk==-1)
-		destroy_win_2(so_long, 1, "Haritada kurallara uymayan kullanımlar var Lütfen Düzeltin", 0);
+	if (so_long->hfk == -1)
+		destroy_win_2(so_long, 1,
+			"Haritada kurallara uymayan kullanımlar var Lütfen Düzeltin", 0);
 }
 
-void destroy_win_2(t_game *so_long, int durum, char *str, int status)
+void	destroy_win_2(t_game *so_long, int durum, char *str, int status)
 {
 	printf("%s", str);
 	free(so_long->map);
-	if(status==1)
+	if (status == 1)
 	{
 		free(so_long->picture);
 		free(so_long->picture->imgplayer);
@@ -64,10 +62,11 @@ void destroy_win_2(t_game *so_long, int durum, char *str, int status)
 	exit(durum);
 }
 
-img	*insertimgpath()
+t_img	*insertimgpath(void)
 {
-	img *picture;
-	picture = malloc(sizeof(img));
+	t_img	*picture;
+
+	picture = malloc(sizeof(t_img));
 	picture->imgplayer = (char **)malloc(sizeof(char *) * 4);
 	picture->imgwall = "./img/tree.xpm";
 	picture->imgcoin = "./img/potion.xpm";

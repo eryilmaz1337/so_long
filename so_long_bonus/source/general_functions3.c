@@ -31,6 +31,8 @@ void	fi(t_img *piscure, t_game *tmp, int i, int k)
 		insertimgxpm(piscure->imgdoor, k * 32, i * 32, tmp);
 	else if (tmp->map[i][k] == 'P')
 		insertimgxpm(piscure->imgplayer[tmp->durum], k * 32, i * 32, tmp);
+	else if (tmp->map[i][k] == 'N')
+		insertimgxpm(piscure->imgfire1, k * 32, i * 32, tmp);
 	else
 		destroy_win_2(tmp, 1, "Hata Lütfen Haritayı Kontrol Edin", 1);
 }
