@@ -44,6 +44,10 @@ void	error_status(t_game *so_long)
 		destroy_win_2(so_long, 1, "***hata (dosya bulunamadı)***", 0);
 	if (so_long->ik == -1)
 		destroy_win_2(so_long, 1, "harita .ber uzantılı olmalıdır", 0);
+	if (so_long->hk == -1)
+		destroy_win_2(so_long, 1,
+			"!!!!! hata lütfen harita dizaynını kurallara uygun girin !!!!!!!!",
+			0);
 	if (so_long->hfk == -1)
 		destroy_win_2(so_long, 1,
 			"Haritada kurallara uymayan kullanımlar var Lütfen Düzeltin", 0);

@@ -62,6 +62,7 @@ typedef struct s_game
 	int		fd;
 	int		an;
 	int		hfk;
+	int		hk;
 	int		ik;
 	int		dongu;
 	int		dongu2;

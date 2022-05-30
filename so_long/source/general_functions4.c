@@ -93,6 +93,7 @@ void	assignment(t_game *so_long, char **data, int index)
 	so_long->uz_y = uz_y(&data[1][2]);
 	map(so_long, &data[1][2]);
 	so_long->uz_x = strlen(so_long->map[0]);
+	so_long->hk = chack_map(so_long, 0, 0, 0);
 	so_long->hfk = char_chack(so_long, 0, 0);
 	so_long->coin = coin_number(so_long);
 	error_status(so_long);

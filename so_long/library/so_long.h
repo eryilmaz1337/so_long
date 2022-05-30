@@ -53,6 +53,7 @@ typedef struct s_game
 	int		uz_y;
 	int		fd;
 	int		an;
+	int		hk;
 	int		hfk;
 	int		ik;
 	int		index;
